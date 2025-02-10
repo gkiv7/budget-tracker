@@ -1,0 +1,157 @@
+// :root {
+//     --primary-color: #ff6f61;
+//     --secondary-color: #ffcc29;
+//     --background-color: #f8f9fa;
+//     --text-color: #333;
+//     --light-text-color: #555;
+//     --card-background-color: #fff;
+//     --highlight-color:#8bc34a;
+//     --border-radius: 8px;
+//     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// }
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ff6f61;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.expenses-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ff6f61;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid #8bc34a;
+}
+
+li:nth-child(odd) {
+  background-color: #ffcc29;
+  border-left-color: #ff6f61;
+}
+
+.expense-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-details span {
+  display: block;
+}
+
+.expense-details span:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.expense-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-form label {
+  font-weight: bold;
+  margin-top: 5px;
+  color: #555;
+}
+
+.expense-form input,
+.expense-form select {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.expense-form button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.expense-form button:hover {
+  background-color: #ffcc29;
+}
+
+.expense-form button:disabled {
+  background-color: #ccc;
+}
+
+.logout {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: darkred;
+}
+
+.expense-item {
+  position: relative; /* Απαραίτητο για να τοποθετήσουμε το κουμπί σε σχέση με το στοιχείο */
+  margin-bottom: 10px; /* Μικρό διάστημα μεταξύ των στοιχείων της λίστας */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.delete-button {
+  position: absolute; /* Θέτουμε το κουμπί σε απόλυτη θέση */
+  top: 10px; /* Απόσταση από την πάνω πλευρά του στοιχείου */
+  right: 10px; /* Απόσταση από τη δεξιά πλευρά του στοιχείου */
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Εφέ hover για το κουμπί */
+}

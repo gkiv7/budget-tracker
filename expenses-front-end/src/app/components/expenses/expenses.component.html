@@ -1,0 +1,80 @@
+<div class="expenses-container">
+  <h2>Expenses</h2>
+
+  <form class="expense-form" (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+    <div>
+      <label for="description">Description</label>
+      <input
+        id="description"
+        type="text"
+        placeholder="Enter description"
+        [(ngModel)]="newExpense.description"
+        name="description"
+        required
+      />
+    </div>
+    <div>
+      <label for="amount">Amount</label>
+      <input
+        id="amount"
+        type="number"
+        placeholder="Enter amount"
+        [(ngModel)]="newExpense.amount"
+        name="amount"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="date">Date</label>
+      <input
+        id="date"
+        type="date"
+        placeholder="Enter date"
+        [(ngModel)]="newExpense.date"
+        name="date"
+        required
+      />
+    </div>
+    <div>
+      <label for="category">Category</label>
+      <select
+        id="category"
+        [(ngModel)]="newExpense.category"
+        name="category"
+        required
+      >
+        <option value="" disabled selected>Select Category</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!expenseForm.form.valid">
+      Add Expense
+    </button>
+  </form>
+
+  <ul>
+    <li *ngFor="let expense of expenses" class="expense-item">
+      <div class="expense-details">
+        <span>{{ expense.description }}</span>
+        <span>{{ expense.amount }}€</span>
+        <span>{{ expense.category }}</span>
+        <span>{{ expense.date | date : "dd/MM/yyyy, HH:mm" }}</span>
+
+        <!-- Διακριτικό κουμπί διαγραφής μόνο αν υπάρχει το expense._id -->
+        <button
+          *ngIf="expense._id"
+          class="delete-button"
+          (click)="deleteExpense(expense._id)"
+        >
+          &#10006;
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Add a logout button -->
+  <button class="logout" (click)="logout()">Log Out</button>
+</div>

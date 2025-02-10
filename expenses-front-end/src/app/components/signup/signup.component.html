@@ -1,0 +1,66 @@
+<!-- src/app/auth/signup/signup.component.html -->
+<div class="signup-container">
+  <div class="signup-card">
+    <h1>Create an Account</h1>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid
+          "
+        >
+          A valid email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('password')?.touched &&
+            signUpForm.get('password')?.invalid
+          "
+        >
+          Password must be at least 6 characters.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('confirmPassword')?.touched &&
+            signUpForm.get('confirmPassword')?.invalid
+          "
+        >
+          Please confirm your password.
+        </div>
+      </div>
+      <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+    <p class="login-link">
+      Already have an account? <a routerLink="/login">Log in here</a>.
+    </p>
+  </div>
+</div>
